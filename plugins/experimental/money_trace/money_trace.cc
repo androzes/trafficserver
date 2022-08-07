@@ -79,6 +79,7 @@ mt_cache_lookup_check(TSCont contp, TSHttpTxn txnp, struct txndata *txn_data)
     switch (cache_result) {
     case TS_CACHE_LOOKUP_MISS:
     case TS_CACHE_LOOKUP_SKIPPED:
+    case TS_CACHE_LOOKUP_HIT_STALE:
       new_mt_header = (char *)generator.moneyTraceHdr(txn_data->client_request_mt_header);
       if (new_mt_header != nullptr) {
         LOG_DEBUG("cache miss, built a new money trace header: %s.", new_mt_header);
